@@ -9,7 +9,11 @@ public class Usuario {
 	}
 
 	public void setRa(String ra) {
-		this.ra = ra;
+		if (ra == "" | ra == null) {
+			this.ra = ra;
+			throw new RuntimeException("RA invalido");
+		}
+		
 	}
 
 	public String getNome() {
@@ -17,28 +21,11 @@ public class Usuario {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		if (nome == "" | nome == null) {
+			this.nome = nome;
+			throw new RuntimeException("Nome invalido");
+		}
+		
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Usuario other = (Usuario) obj;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (ra == null) {
-			if (other.ra != null)
-				return false;
-		} else if (!ra.equals(other.ra))
-			return false;
-		return true;
-	}
 }
